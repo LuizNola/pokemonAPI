@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/index.js",
     "migration:run": "npx sequelize-cli db:migrate --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",
+    "migration:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",
     "migration:create": "sequelize-cli migration:generate --migrations-path src/infra/sequelize/migrations --name"
   },
   "author": "",

@@ -15,7 +15,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.bulkInsert('availablePokemons', [
+    await queryInterface.bulkInsert('AvailablePokemons', [
       { name: 'pikachu' },
       { name: 'charizard' },
       { name: 'mewtwo' },

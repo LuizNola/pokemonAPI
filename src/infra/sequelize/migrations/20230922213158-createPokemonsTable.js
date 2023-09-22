@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('pokemons', {
-      Id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -20,8 +20,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'availablePokemons', // Nome da tabela referenciada
-          key: 'ID', // Nome da coluna na tabela referenciada
+          model: 'availablePokemons',
+          key: 'id', 
         },
       },
     });

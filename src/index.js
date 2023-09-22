@@ -1,14 +1,13 @@
 const express = require('express')
 const Sequelize = require('sequelize');
 const dbConfig = require('./infra/sequelize/config');
+const routes = require("./routes/index.routes")
 
 const PORT = 3000;
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('hello world teste');
-})
+app.use("/api", routes)
 
 app.listen(PORT, () => {
     

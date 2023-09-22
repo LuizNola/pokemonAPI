@@ -5,6 +5,6 @@ module.exports = {
       database: 'pokemons-luiz',
       host: 'localhost',
       dialect: 'postgres',
-    },
+    }
 };
   

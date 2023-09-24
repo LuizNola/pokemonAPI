@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/healthcheck', async (_req, res) => res.status(200).end("ok"))
 
-router.use('/pokemon', pokemonRouter)
+router.use('/pokemons', pokemonRouter)
 
 module.exports = router

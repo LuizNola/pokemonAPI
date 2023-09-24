@@ -1,6 +1,8 @@
 const express = require('express');
+const pokemonController = require('../controller/pokemon.controller')
+
 const router = express.Router();
 
-router.get('/healthcheck', async (_req, res) => res.status(200).end("ok"))
+router.post('', (req, res) => pokemonController.createPokemon(req, res))
 
 module.exports = router

@@ -34,4 +34,18 @@ async function createPokemon({tipo, treinador}) {
     }
 }
 
-module.exports = {createPokemon}
+async function editPokemon({id, treinador}) {
+   
+    const result = await Pokemon.update({coachName: treinador}, {where: {id: id}})
+    if(result[0] === 0) {
+        return {
+            success: false,
+            message: "Pokemon não encontrado!"
+        }
+    }
+    return {
+        success: true
+    }
+}
+
+module.exports = {createPokemon, editPokemon}

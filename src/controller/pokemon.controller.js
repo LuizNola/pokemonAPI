@@ -7,7 +7,7 @@ async function createPokemon (req, res) {
         treinador: req.body.treinador
     }
 
-    const verify = verifyParams(params,res)
+    const verify = verifyParams(params)
     
     if(verify){
         return res.status(400).json(verify)
@@ -22,6 +22,29 @@ async function createPokemon (req, res) {
     }
 }
 
+async function editPokemon (req, res) {
+    const params = {
+        id: req.params.id,
+        treinador: req.body.treinador
+    }
+
+
+    const verify = verifyParams(params)
+    
+    if(verify){
+        return res.status(400).json(verify)
+    }
+
+    const result = await service.editPokemon(params)
+
+    if(!result.success){
+        return res.status(400).json({"Error": result.message})
+    }
+    return res.status(204).send()
+
+}
+
 module.exports = {
-    createPokemon
+    createPokemon,
+    editPokemon
 }

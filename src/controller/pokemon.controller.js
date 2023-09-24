@@ -61,9 +61,17 @@ async function findOnePokemon(req, res) {
 
     return res.status(200).json(result.data)
 }
+
+async function getAllPokemons(req, res) {
+    const result = await service.getAllPokemons(req, res)
+
+    return res.status(200).json(result)
+}
+
 module.exports = {
     createPokemon,
     editPokemon,
     deletePokemon,
-    findOnePokemon
+    findOnePokemon,
+    getAllPokemons
 }

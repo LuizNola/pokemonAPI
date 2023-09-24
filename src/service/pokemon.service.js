@@ -91,4 +91,22 @@ async function findOnePokemon(id) {
         }
     }
 }
-module.exports = {createPokemon, editPokemon, deletePokemon, findOnePokemon}
+
+async function getAllPokemons() {
+    const result = await Pokemon.findAll({include: [
+        {
+          model: AvaliablePokemon,
+          attributes: ["id","name"],
+        },
+      ]})
+
+    return result.map((pokemon) => {
+        return  {
+            "id": pokemon.id,
+            "tipo": pokemon.AvailablePokemon.name,
+            "treinador": pokemon.coachName,
+            "nivel": pokemon.level
+        }
+    })
+}
+module.exports = {createPokemon, editPokemon, deletePokemon, findOnePokemon, getAllPokemons}

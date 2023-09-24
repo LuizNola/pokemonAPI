@@ -48,4 +48,18 @@ async function editPokemon({id, treinador}) {
     }
 }
 
-module.exports = {createPokemon, editPokemon}
+async function deletePokemon(id) {
+    
+    const result = await Pokemon.destroy({where: {id}})
+
+    if(!result){
+        return {
+            success: false,
+            message: "Pokemon não encontrado!"
+        }
+    }
+    return {
+        success: true
+    }
+}
+module.exports = {createPokemon, editPokemon, deletePokemon}

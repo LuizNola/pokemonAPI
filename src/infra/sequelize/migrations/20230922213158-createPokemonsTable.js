@@ -24,10 +24,25 @@ module.exports = {
           key: 'id', 
         },
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('pokemons');
+    await queryInterface.removeConstraint('Pokemons', 'Pokemons_avaliablePokemonId_fkey');
+    await queryInterface.dropTable('Pokemons');
   },
 };

@@ -25,7 +25,7 @@ async function createPokemon({tipo, treinador}) {
 
     return {
         success: true,
-        result: {
+        data: {
             "id": createdPokemon.id,
             "tipo": isAvaliablePokemon.name,
             "treinador": createdPokemon.coachName,
@@ -62,4 +62,33 @@ async function deletePokemon(id) {
         success: true
     }
 }
-module.exports = {createPokemon, editPokemon, deletePokemon}
+
+async function findOnePokemon(id) {
+    const pokemon = await Pokemon.findOne(
+        {where: {id},
+        include: [
+            {
+              model: AvaliablePokemon,
+              attributes: ["id","name"],
+            },
+          ],
+        })
+
+    if(!pokemon) {
+        return {
+            success: false,
+            message: "Pokemon não encontrado"
+        }
+    }
+
+    return {
+        success: true,
+        data: {
+            "id": pokemon.id,
+            "tipo": pokemon.AvailablePokemon.name,
+            "treinador": pokemon.coachName,
+            "nivel": pokemon.level
+        }
+    }
+}
+module.exports = {createPokemon, editPokemon, deletePokemon, findOnePokemon}

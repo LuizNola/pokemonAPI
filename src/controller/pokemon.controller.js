@@ -15,7 +15,7 @@ async function createPokemon (req, res) {
     const result = await service.createPokemon(params)
     
     if(result.success) {
-        return res.status(200).json(result.result)
+        return res.status(200).json(result.data)
     }else {
         return res.status(400).json({"Error": result.message})
     }
@@ -52,8 +52,18 @@ async function deletePokemon (req,res) {
 
 }
 
+async function findOnePokemon(req, res) {
+    const result = await service.findOnePokemon(req.params.id)
+
+    if(!result.success){
+        return res.status(400).json({"Error": result.message})
+    }
+
+    return res.status(200).json(result.data)
+}
 module.exports = {
     createPokemon,
     editPokemon,
-    deletePokemon
+    deletePokemon,
+    findOnePokemon
 }

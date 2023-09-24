@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('', (req, res) => pokemonController.createPokemon(req, res))
 router.put('/:id', (req, res) => pokemonController.editPokemon(req, res))
 router.delete('/:id', (req, res) => pokemonController.deletePokemon(req, res))
+router.get('/:id', (req, res) => pokemonController.findOnePokemon(req, res))
 
 module.exports = router

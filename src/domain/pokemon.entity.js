@@ -15,10 +15,14 @@ const Pokemon = sequelize.define('Pokemon', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: AvailablePokemon, 
+      model: 'AvailablePokemon', 
       key: 'id',
     },
   },
 });
+
+Pokemon.belongsTo(AvailablePokemon, { foreignKey: 'avaliablePokemonId' });
+AvailablePokemon.hasMany(Pokemon, { foreignKey: 'avaliablePokemonId' });
+
 
 module.exports = Pokemon;

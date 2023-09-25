@@ -59,13 +59,23 @@ async function findOnePokemon(req, res) {
         return res.status(400).json({"Error": result.message})
     }
 
-    return res.status(200).json(result.data)
+    return res.status(200).json({
+        "id": result.data.id,
+        "tipo": result.data.AvailablePokemon.name,
+        "treinador": result.data.coachName,
+        "nivel": result.data.level
+    })
 }
 
 async function getAllPokemons(req, res) {
     const result = await service.getAllPokemons(req, res)
 
-    return res.status(200).json(result)
+    return res.status(200).json(result.map((pokemon) => {
+        return {"id": pokemon.id,
+        "tipo": pokemon.AvailablePokemon.name,
+        "treinador": pokemon.coachName,
+        "nivel": pokemon.level}
+    }))
 }
 
 module.exports = {

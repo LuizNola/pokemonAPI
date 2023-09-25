@@ -15,9 +15,9 @@ async function createPokemon (req, res) {
     const result = await service.createPokemon(params)
     
     if(result.success) {
-        return res.status(200).json(result.data)
+        return res.status(result.status).json(result.data)
     }else {
-        return res.status(400).json({"Error": result.message})
+        return res.status(result.status).json({"Error": result.message})
     }
 }
 
@@ -35,9 +35,9 @@ async function editPokemon (req, res) {
     const result = await service.editPokemon(params)
 
     if(!result.success){
-        return res.status(400).json({"Error": result.message})
+        return res.status(result.status).json({"Error": result.message})
     }
-    return res.status(204).send()
+    return res.status(result.status).send()
 
 }
 
@@ -45,10 +45,10 @@ async function deletePokemon (req,res) {
     const result = await service.deletePokemon(req.params.id)
 
     if(!result.success){
-        return res.status(400).json({"Error": result.message})
+        return res.status(result.status).json({"Error": result.message})
     }
 
-    return res.status(204).send()
+    return res.status(result.status).send()
 
 }
 
@@ -56,10 +56,10 @@ async function findOnePokemon(req, res) {
     const result = await service.findOnePokemon(req.params.id)
 
     if(!result.success){
-        return res.status(400).json({"Error": result.message})
+        return res.status(result.status).json({"Error": result.message})
     }
 
-    return res.status(200).json({
+    return res.status(result.status).json({
         "id": result.data.id,
         "tipo": result.data.AvailablePokemon.name,
         "treinador": result.data.coachName,

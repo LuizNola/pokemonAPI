@@ -12,6 +12,7 @@ async function createPokemon({tipo, treinador}) {
     if(!isAvaliablePokemon){
         return {
             success: false,
+            status: 400,
             message: "O Pokemon não existe!" 
         }
     }
@@ -25,6 +26,7 @@ async function createPokemon({tipo, treinador}) {
 
     return {
         success: true,
+        status: 200,
         data: {
             "id": createdPokemon.id,
             "tipo": isAvaliablePokemon.name,
@@ -40,11 +42,13 @@ async function editPokemon({id, treinador}) {
     if(result[0] === 0) {
         return {
             success: false,
+            status: 400,
             message: "Pokemon não encontrado!"
         }
     }
     return {
-        success: true
+        success: true,
+        status: 204
     }
 }
 
@@ -55,11 +59,13 @@ async function deletePokemon(id) {
     if(!result){
         return {
             success: false,
+            status: 400,
             message: "Pokemon não encontrado!"
         }
     }
     return {
-        success: true
+        success: true,
+        status: 204
     }
 }
 
@@ -77,12 +83,14 @@ async function findOnePokemon(id) {
     if(!pokemon) {
         return {
             success: false,
+            status: 400,
             message: "Pokemon não encontrado"
         }
     }
 
     return {
         success: true,
+        status: 200,
         data: pokemon
     }
 }

@@ -1,4 +1,3 @@
-const AvaliablePokemon = require('../domain/avaliablePokemon.entity')
 const pokemonService = require('./pokemon.service')
 
 

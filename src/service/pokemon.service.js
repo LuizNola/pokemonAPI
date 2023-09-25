@@ -107,18 +107,16 @@ async function getAllPokemons() {
 }
 
 async function levelAdd(pokemonId) {
-  console.log(pokemonId)
-
-  const {data} = await findOnePokemon(pokemonId);
-  return await data.update({ level: data.level + 1 });
+  const {data: pokemon} = await findOnePokemon(pokemonId);
+  return await pokemon.update({ level: pokemon.level + 1 });
 }
 
 async function levelSubtract(pokemonId) {
-    const {data} = await findOnePokemon(pokemonId);
-    if (data.level === 1) {
+    const {data: pokemon} = await findOnePokemon(pokemonId);
+    if (pokemon.level === 1) {
       await deletePokemon(pokemonId);
     }
-    return await data.update({ level: data.level - 1 });
+    return await pokemon.update({ level: pokemon.level - 1 });
 }
 
 module.exports = {

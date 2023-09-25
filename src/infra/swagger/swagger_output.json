@@ -1,0 +1,294 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "healthcheck",
+      "description": "Endpoints para verificar o estado da aplicação"
+    },
+    {
+      "name": "pokemons",
+      "description": "Endpoints relacionados a manipulação de dados da tabela de pokemons"
+    },
+    {
+      "name": "batalha",
+      "description": "Endpoints relacionados a batalha pokemon"
+    }
+  ],
+  "paths": {
+    "/healthcheck": {
+      "get": {
+        "tags": ["healthcheck"],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pokemons/": {
+      "post": {
+        "tags": ["pokemons"],
+        "name": "Criar Pokemon",
+        "description": "Cria um pokemon!",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo": {
+                  "example": "pikachu"
+                },
+                "treinador": {
+                  "example": "thiago"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "O Pokemon não existe!"
+          },
+          "200": {
+            "description": "Sucesso!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "tipo": {
+                  "type": "string",
+                  "example": "pikachu"
+                },
+                "treinador": {
+                  "type": "string",
+                  "example": "Thiago"
+                },
+                "nivel": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+            
+          }
+        }
+      },
+      "get": {
+        "tags": ["pokemons"],
+        "description": "Pega uma lista com todos os pokemons!",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "tipo": {
+                    "type": "string",
+                    "example": "mewtwo"
+                  },
+                  "treinador": {
+                    "type": "string",
+                    "example": "gigi"
+                  },
+                  "nivel": {
+                    "type": "integer",
+                    "example": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pokemons/{id}": {
+      "put": {
+        "tags": ["pokemons"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "treinador": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Sucesso, Sem conteudo"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["pokemons"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Sucesso, Sem conteudo"
+          }
+        }
+      },
+      "get": {
+        "tags": ["pokemons"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "schema": {
+              "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "tipo": {
+                    "type": "string",
+                    "example": "mewtwo"
+                  },
+                  "treinador": {
+                    "type": "string",
+                    "example": "gigi"
+                  },
+                  "nivel": {
+                    "type": "integer",
+                    "example": 3
+                  }
+                }
+            }
+          },
+          "400": {
+            "description": "O Pokemon não existe!"
+          }
+        }
+      }
+    },
+    "/batalhar/{pokemonAId}/{pokemonBId}": {
+      "post": {
+        "tags": ["batalha"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "pokemonAId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pokemonBId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "vencedor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "tipo": {
+                      "type": "string",
+                      "example": "mewtwo"
+                    },
+                    "treinador": {
+                      "type": "string",
+                      "example": "gigi"
+                    },
+                    "nivel": {
+                      "type": "integer",
+                      "example": 3
+                    }
+                  }
+                },
+                "perdedor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 3
+                    },
+                    "tipo": {
+                      "type": "string",
+                      "example": "pikachu"
+                    },
+                    "treinador": {
+                      "type": "string",
+                      "example": "jojo"
+                    },
+                    "nivel": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Um dos pokemons não existe!"
+          }
+        }
+      }
+    }
+  }
+}

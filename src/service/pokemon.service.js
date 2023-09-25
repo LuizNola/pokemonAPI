@@ -83,12 +83,7 @@ async function findOnePokemon(id) {
 
     return {
         success: true,
-        data: {
-            "id": pokemon.id,
-            "tipo": pokemon.AvailablePokemon.name,
-            "treinador": pokemon.coachName,
-            "nivel": pokemon.level
-        }
+        data: pokemon
     }
 }
 
@@ -100,13 +95,30 @@ async function getAllPokemons() {
         },
       ]})
 
-    return result.map((pokemon) => {
-        return  {
-            "id": pokemon.id,
-            "tipo": pokemon.AvailablePokemon.name,
-            "treinador": pokemon.coachName,
-            "nivel": pokemon.level
-        }
-    })
+    return result
 }
-module.exports = {createPokemon, editPokemon, deletePokemon, findOnePokemon, getAllPokemons}
+
+async function levelAdd(pokemonId) {
+  console.log(pokemonId)
+
+  const {data} = await findOnePokemon(pokemonId);
+  return await data.update({ level: data.level + 1 });
+}
+
+async function levelSubtract(pokemonId) {
+    const {data} = await findOnePokemon(pokemonId);
+    if (data.level === 1) {
+      await deletePokemon(pokemonId);
+    }
+    return await data.update({ level: data.level - 1 });
+}
+
+module.exports = {
+    createPokemon, 
+    editPokemon, 
+    deletePokemon, 
+    findOnePokemon, 
+    getAllPokemons,
+    levelSubtract,
+    levelAdd
+}

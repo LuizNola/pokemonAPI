@@ -1,8 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 module.exports = {
   development: {
-    username: 'postgres',
-    password: 'postgres',
-    database: 'pokemons-luiz',
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     host: 'localhost',
     dialect: 'postgres',
   }

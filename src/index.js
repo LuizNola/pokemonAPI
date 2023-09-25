@@ -2,10 +2,13 @@ const express = require('express')
 const sequelize = require('./infra/sequelize/sequelize');
 const routes = require("./routes/index.routes")
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./infra/swagger/swagger_output.json');
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 const app = express();
 

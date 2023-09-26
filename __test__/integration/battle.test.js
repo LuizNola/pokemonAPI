@@ -22,7 +22,7 @@ describe('[e2e] test battle', () => {
       )
 
     const res = await request(app)
-      .post(`/batalhar/${pokemonA.body.id}/${pokemonA.body.id}`)
+      .post(`/batalhar/${pokemonA.body.id}/${pokemonB.body.id}`)
       .send(
         {
           tipo: 'mewtwo',

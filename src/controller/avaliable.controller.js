@@ -3,7 +3,7 @@ const verifyParams = require('./helpers/verifyParamans.helper')
 
 async function createAvaliablePokemon(req, res) {
     const params = {
-        name: req.body.nome
+        nome: req.body.nome
     }
 
     const verify = verifyParams(params)

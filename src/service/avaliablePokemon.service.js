@@ -1,9 +1,9 @@
 const AvailablePokemon = require('../domain/avaliablePokemon.entity')
 
-async function createAvaliablePokemon({name}) {
+async function createAvaliablePokemon({nome}) {
     const existPokemon = await AvailablePokemon.findOne({
         where: {
-          name
+          name: nome
         }
       })
 
@@ -15,7 +15,7 @@ async function createAvaliablePokemon({name}) {
         }
     }
 
-    const result = await AvailablePokemon.create({name})
+    await AvailablePokemon.create({name: nome})
 
     return {
         success: true,

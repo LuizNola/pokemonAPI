@@ -50,7 +50,7 @@ describe('[e2e] Test createPokemon', () => {
       .post('/pokemons/')
       .send(
         {
-          tipo: 'pichu',
+          tipo: 'Esse pokemon não deveria existir',
           treinador: 'thiaguinho'
         }
       )
@@ -172,7 +172,6 @@ describe('[e2e] Test findAllPokemons', () => {
       .get('/pokemons/')
 
     expect(res.statusCode).toBe(200)
-    // expect(res.body).toHaveLength(0);
   })
 
   it('should find all pokemons', async () => {
@@ -189,6 +188,5 @@ describe('[e2e] Test findAllPokemons', () => {
       .get('/pokemons/')
 
     expect(res.statusCode).toBe(200)
-    // expect(res.body).toHaveLength(1);
   })
 })

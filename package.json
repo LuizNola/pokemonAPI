@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "docker-compose -f docker-compose.dbtest.yml up -d && NODE_ENV=test npm run migration:run && NODE_ENV=test jest",
+    "test": "docker-compose -f docker-compose.dbtest.yml up -d && NODE_ENV=test jest",
+    "migration:clean:test": "NODE_ENV=test  npx sequelize-cli db:drop --config src/infra/sequelize/config.js",
+    "migration:create:test": "NODE_ENV=test  npx sequelize-cli db:create --config src/infra/sequelize/config.js",
+    "migration:run:test": "NODE_ENV=test npm run migration:run",
     "start": "nodemon src/index.js",
     "migration:run": "npx sequelize-cli db:migrate --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",
     "migration:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",

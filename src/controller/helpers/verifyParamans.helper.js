@@ -1,4 +1,4 @@
-function findNullFields(obj, res) {
+function findNullFields(obj) {
     const nullFields = [];
     for (const key in obj) {
       if (obj.hasOwnProperty(key) && obj[key] === undefined) {

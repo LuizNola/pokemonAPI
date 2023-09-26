@@ -1,7 +1,6 @@
-const { execSync } = require('child_process');
+const { execSync } = require('child_process')
 
 module.exports = () => {
-    execSync('npm run migration:create:test'); 
-    execSync('npm run migration:run:test');   
+  execSync('npm run migration:create:test')
+  execSync('npm run migration:run:test')
 }
-

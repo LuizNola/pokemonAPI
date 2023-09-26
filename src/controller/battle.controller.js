@@ -23,7 +23,7 @@ async function goBattle(req, res){
             }
         })
     }else{
-        return res.status(result.status).json({message: result.message})
+        return res.status(result.status).json({Error: result.message})
     }
 }
 

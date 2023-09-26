@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -6,39 +6,39 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       coachName: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       level: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       avaliablePokemonId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'AvailablePokemons',
-          key: 'id', 
-        },
+          key: 'id'
+        }
       },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-    });
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      }
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeConstraint('Pokemons', 'Pokemons_avaliablePokemonId_fkey');
-    await queryInterface.dropTable('Pokemons');
-  },
-};
+    await queryInterface.removeConstraint('Pokemons', 'Pokemons_avaliablePokemonId_fkey')
+    await queryInterface.dropTable('Pokemons')
+  }
+}

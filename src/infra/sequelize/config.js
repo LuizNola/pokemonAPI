@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-dotenv.config();
+const dotenv = require('dotenv')
+dotenv.config()
 
 module.exports = {
   development: {
@@ -8,7 +8,7 @@ module.exports = {
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
     host: 'localhost',
-    dialect: process.env.DB,
+    dialect: process.env.DB
   },
   test: {
     username: process.env.DB_USER_TEST,
@@ -16,6 +16,6 @@ module.exports = {
     database: process.env.DB_NAME_TEST,
     port: process.env.DB_PORT_TEST,
     host: 'localhost',
-    dialect: process.env.DB_TEST,
+    dialect: process.env.DB_TEST
   }
-};
+}

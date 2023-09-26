@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -7,32 +7,32 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    });
+    })
 
     await queryInterface.bulkInsert('AvailablePokemons', [
       { name: 'pikachu' },
       { name: 'charizard' },
-      { name: 'mewtwo' },
-    ]);
+      { name: 'mewtwo' }
+    ])
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('AvailablePokemons');
+    await queryInterface.dropTable('AvailablePokemons')
   }
-};
+}

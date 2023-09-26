@@ -11,11 +11,14 @@
     "start": "nodemon src/index.js",
     "migration:run": "npx sequelize-cli db:migrate --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",
     "migration:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/infra/sequelize/config.js --migrations-path src/infra/sequelize/migrations",
-    "migration:create": "sequelize-cli migration:generate --migrations-path src/infra/sequelize/migrations --name"
+    "migration:create": "sequelize-cli migration:generate --migrations-path src/infra/sequelize/migrations --name",
+    "init:dev": "docker-compose up -d && npm run migration:run",
+    "dev": "docker-compose up"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql2": "^3.6.1",
     "nodemon": "^3.0.1",

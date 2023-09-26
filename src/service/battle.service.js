@@ -2,6 +2,15 @@ const pokemonService = require('./pokemon.service')
 
 async function goBattle ({ pokemonAId, pokemonBId }) {
   try {
+
+    if( pokemonAId === pokemonBId ) {
+      return {
+        success: false,
+        status: 400,
+        message: 'Escolha pokemons diferentes!'
+      }
+    }
+
     const { data: pokemonA } = await pokemonService.findOnePokemon(pokemonAId)
     const { data: pokemonB } = await pokemonService.findOnePokemon(pokemonBId)
 

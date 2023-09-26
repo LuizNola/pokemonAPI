@@ -1,4 +1,5 @@
 const AvailablePokemon = require('../domain/avaliablePokemon.entity')
+const { getAllPokemons } = require('./pokemon.service')
 
 async function createAvaliablePokemon ({ nome }) {
   const existPokemon = await AvailablePokemon.findOne({
@@ -29,6 +30,16 @@ async function deleteAvaliablePokemon (id) {
       id
     }
   })
+
+  const existPokemonsCreated = await getAllPokemons();
+  if(existPokemonsCreated) {
+    return {
+      success: false,
+      status: 400,
+      message: 'ainda existem pokemons com esse tipo'
+    }
+  }
+
 
   if (!existPokemon) {
     return {

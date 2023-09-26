@@ -22,6 +22,10 @@
     {
       "name": "batalha",
       "description": "Endpoints relacionados a batalha pokemon"
+    },
+    {
+      "name": "Tipos de pokemon",
+      "description": "Endpoints relacionados a manipulação de dados da tabela de pokemons validos"
     }
   ],
   "paths": {
@@ -286,6 +290,46 @@
           },
           "400": {
             "description": "Um dos pokemons não existe!"
+          }
+        }
+      }
+    },
+    "/pokemonsvalidos":{
+      "post": {
+        "tags": ["Tipos de pokemon"],
+        "name": "Criar Pokemon valido",
+        "description": "Cria um pokemon valido!",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "pichu"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso!"
+            
+          }
+        }
+      }
+    },
+    "/pokemonsvalidos/{id}":{
+      "delete": {
+        "tags": ["Tipos de pokemon"],
+        "name": "deletar Pokemon valido",
+        "description": "deleta um pokemon valido!",
+        "responses": {
+          "204": {
+            "description": "Sucesso!"
+            
           }
         }
       }

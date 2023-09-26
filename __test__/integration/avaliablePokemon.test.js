@@ -10,8 +10,6 @@ describe('[e2e] Test createAvaliablePokemon', () => {
             nome: 'pichu'
           }
         )
-
-        console.log(res)
   
       expect(res.statusCode).toBe(201)
      

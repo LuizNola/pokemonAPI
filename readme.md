@@ -59,7 +59,17 @@ $ npm run dev
 | `npm run init:dev` | Comando usado para configurar os containers na primeira vez |
 | `npm run dev` | Inicia o projeto em dev |
 
+
+### Adicionais
+- Testes unitarios e de integração
+- Documentação automatica (swagger)
+
+### Extras!
+- Ao inves de deixar os pokemons disponiveis salvos em uma array no codigo, criei uma tabela para salvar os tipos disponiveis. Sendo assim e possivel adicionar ou remover tipos sem a necessidade de alteração no codigo (as rotas extras não constão aqui, mas e possivel velas na documentação).
+
 ### Endpoits Pokemons
+
+*Acesse  `/docs` para visualizar as rotas pelo swagger
 
 ✅ **GET** `/pokemons`
 
@@ -165,7 +175,7 @@ $ npm run dev
 
 <br>
 
-## 👤 Author
+## 👤 Autor
 
 <p align="center">
 <p  align="center">O homem mais lindo do github:</p>
